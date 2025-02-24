@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/colors_manager.dart';
 import 'package:bookly_app/core/routes_manager.dart';
 import 'package:bookly_app/utils/app_theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: SplashView(),
-      theme:AppTheme.dark,
+      theme:ThemeData.dark().copyWith(scaffoldBackgroundColor: ColorsManager.black),
       debugShowCheckedModeBanner: false,
       routes: {
         RoutesManager.home :(context)=> SplashView()
