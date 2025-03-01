@@ -1,8 +1,11 @@
 import 'package:bookly_app/core/images_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../../core/colors_manager.dart';
 import '../../../../../../core/constant_manager.dart';
 import '../../../../../../utils/app_styles/app_styles.dart';
+import 'book_rating.dart';
 
 class BestSellerItemView extends StatelessWidget {
   const BestSellerItemView({super.key});
@@ -29,29 +32,34 @@ class BestSellerItemView extends StatelessWidget {
           const SizedBox(
             width: 30,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                  width: MediaQuery.of(context).size.width * .5,
-                  child:  Text(
-                    'Harry Potter and the Goblet of Fire',
-                    maxLines: 2,
-                    style: AppStyles.textStyle20.copyWith(fontFamily: ConstantManager.kGtSectraFine),
-                  )
-              ),
-              const SizedBox(height: 3,),
-              const Text('J.K. Rowling' ,style:  AppStyles.textStyle14,),
-              const SizedBox(height: 3,),
-              Row(
-                children: [
-                  Text('19.99 €',style: AppStyles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
-                ],
-              )
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width * .5,
+                    child:  Text(
+                      'Harry Potter and the Goblet of Fire',
+                      maxLines: 2,
+                      style: AppStyles.textStyle20.copyWith(fontFamily: ConstantManager.kGtSectraFine),
+                    )
+                ),
+                const SizedBox(height: 3,),
+                const Text('J.K. Rowling' ,style:  AppStyles.textStyle14,),
+                const SizedBox(height: 3,),
+                Row(
+                  children: [
+                    Text('19.99 €',style: AppStyles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
+                    Spacer(),
+                    BookRating()
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),
     );
   }
 }
+
