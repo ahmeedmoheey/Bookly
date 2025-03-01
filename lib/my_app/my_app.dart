@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       home: SplashView(),
       theme:ThemeData.dark().copyWith(scaffoldBackgroundColor: ColorsManager.black),
+
+
       debugShowCheckedModeBanner: false,
       routes: {
         RoutesManager.home :(context)=> SplashView()
