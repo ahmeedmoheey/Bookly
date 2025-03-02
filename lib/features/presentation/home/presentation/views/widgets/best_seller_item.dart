@@ -1,6 +1,7 @@
 import 'package:bookly_app/core/images_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/colors_manager.dart';
 import '../../../../../../core/constant_manager.dart';
@@ -12,52 +13,57 @@ class BestSellerItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 125,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.5 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.red,
-                  image: const DecorationImage(
-                      image: AssetImage(
-                        AssetsManager.testImage,
-                      ),
-                      fit: BoxFit.fill)),
+    return GestureDetector(
+      onTap: (){
+        GoRouter.of(context).push('/booksDetails');
+      },
+      child: SizedBox(
+        height: 125,
+        child: Row(
+          children: [
+            AspectRatio(
+              aspectRatio: 2.5 / 4,
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.red,
+                    image: const DecorationImage(
+                        image: AssetImage(
+                          AssetsManager.testImage,
+                        ),
+                        fit: BoxFit.fill)),
+              ),
             ),
-          ),
-          const SizedBox(
-            width: 30,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * .5,
-                    child:  Text(
-                      'Harry Potter and the Goblet of Fire',
-                      maxLines: 2,
-                      style: AppStyles.textStyle20.copyWith(fontFamily: ConstantManager.kGtSectraFine),
-                    )
-                ),
-                const SizedBox(height: 3,),
-                const Text('J.K. Rowling' ,style:  AppStyles.textStyle14,),
-                const SizedBox(height: 3,),
-                Row(
-                  children: [
-                    Text('19.99 €',style: AppStyles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
-                    Spacer(),
-                    BookRating()
-                  ],
-                )
-              ],
+            const SizedBox(
+              width: 30,
             ),
-          )
-        ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * .5,
+                      child:  Text(
+                        'Harry Potter and the Goblet of Fire',
+                        maxLines: 2,
+                        style: AppStyles.textStyle20.copyWith(fontFamily: ConstantManager.kGtSectraFine),
+                      )
+                  ),
+                  const SizedBox(height: 3,),
+                  const Text('J.K. Rowling' ,style:  AppStyles.textStyle14,),
+                  const SizedBox(height: 3,),
+                  Row(
+                    children: [
+                      Text('19.99 €',style: AppStyles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
+                      Spacer(),
+                      BookRating()
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
