@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-
       routerConfig: RoutesManager.router ,
       theme:ThemeData.dark().copyWith(scaffoldBackgroundColor: ColorsManager.backGround),
+
 
       debugShowCheckedModeBanner: false,
     );

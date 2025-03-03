@@ -1,7 +1,7 @@
 import 'package:bookly_app/features/presentation/home/presentation/views/home_view.dart';
-import 'package:bookly_app/features/presentation/home/presentation/views/widgets/book_details_view_body.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/presentation/home/presentation/views/book_details_view.dart';
 import '../features/presentation/splash/splash_view.dart';
 
 class RoutesManager{
@@ -17,7 +17,7 @@ class RoutesManager{
          ),
          GoRoute(
             path: '/booksDetails',
-            builder: (context, state) =>  const BookDetailsViewBody(),
+            builder: (context, state) =>  const BookDetailsView(),
          ),
 
       ],

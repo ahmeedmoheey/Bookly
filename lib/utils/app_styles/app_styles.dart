@@ -19,6 +19,7 @@ class AppStyles{
   static const textStyle14 = TextStyle(
       fontWeight: FontWeight.normal,
       fontSize: 14,
+
   );
   static const textStyle16 = TextStyle(
       fontWeight: FontWeight.w500,

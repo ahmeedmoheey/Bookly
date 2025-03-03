@@ -5,13 +5,15 @@ import '../../../../../../core/colors_manager.dart';
 import '../../../../../../utils/app_styles/app_styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
+  const BookRating({super.key,  this.mainAxisAlignment = MainAxisAlignment.center});
+ final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
+    mainAxisAlignment:mainAxisAlignment,
       children: [
         const Icon(
+          size: 14,
           FontAwesomeIcons.solidStar,
           color: ColorsManager.starColor,
         ),
@@ -25,9 +27,12 @@ class BookRating extends StatelessWidget {
         const SizedBox(
           width: 5.3,
         ),
-        Text(
-          '(245)',
-          style: AppStyles.textStyle14.copyWith(color: const Color(0xFF707070)),
+        Opacity(
+          opacity: .5,
+          child:    Text(
+            '(245)',
+            style: AppStyles.textStyle14.copyWith(fontWeight: FontWeight.w600),
+          ),
         )
       ],
     );

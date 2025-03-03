@@ -14,7 +14,7 @@ class BestSellerItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         GoRouter.of(context).push('/booksDetails');
       },
       child: SizedBox(
@@ -55,8 +55,8 @@ class BestSellerItemView extends StatelessWidget {
                   Row(
                     children: [
                       Text('19.99 €',style: AppStyles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
-                      Spacer(),
-                      BookRating()
+                       const Spacer(),
+                   const    BookRating()
                     ],
                   )
                 ],
