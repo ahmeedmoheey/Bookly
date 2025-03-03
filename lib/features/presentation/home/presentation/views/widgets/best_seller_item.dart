@@ -1,9 +1,7 @@
 import 'package:bookly_app/core/images_manager.dart';
+import 'package:bookly_app/core/routes_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../../../core/colors_manager.dart';
 import '../../../../../../core/constant_manager.dart';
 import '../../../../../../utils/app_styles/app_styles.dart';
 import 'book_rating.dart';
@@ -15,7 +13,7 @@ class BestSellerItemView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push('/booksDetails');
+        GoRouter.of(context).push(RoutesManager.kBookDetails);
       },
       child: SizedBox(
         height: 125,

@@ -12,7 +12,7 @@ class BoxAction extends StatelessWidget {
       child: Row(
         children: const  [
           Expanded(
-              child: CustomButton(
+              child: const  CustomButton(
                 text: '19.99€',
                 backgroundColor: Colors.white,
                 textColor: Colors.black,
@@ -20,7 +20,7 @@ class BoxAction extends StatelessWidget {
                     topLeft: Radius.circular(16), bottomLeft: Radius.circular(16)),
               )),
           Expanded(
-              child: CustomButton(
+              child:  const CustomButton(
                 fontSize: 16,
                 text:'Free preview' ,
                 backgroundColor: Color(0xFFEF8262),

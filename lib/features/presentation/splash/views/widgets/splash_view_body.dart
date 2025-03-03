@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/constant_manager.dart';
 import 'package:bookly_app/core/images_manager.dart';
+import 'package:bookly_app/core/routes_manager.dart';
 import 'package:bookly_app/features/presentation/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/presentation/splash/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       // Get.to(() => const HomeView(),
       //     transition: Transition.fade,
       //     duration: ConstantManager.kTranstionDuration);
-      GoRouter.of(context).push('/homeView');
+      GoRouter.of(context).push(RoutesManager.kHomeView);
     },
     );
   }
