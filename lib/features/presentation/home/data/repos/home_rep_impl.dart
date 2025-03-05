@@ -1,50 +1,96 @@
-import 'package:bookly_app/core/api_server/api_server.dart';
-import 'package:bookly_app/core/errors/failures.dart';
-import 'package:bookly_app/features/presentation/home/data/models/book_model.dart';
-import 'package:bookly_app/features/presentation/home/data/repos/home_repo.dart';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import '../../../../../core/api_server/api_server.dart';
+import '../../../../../core/errors/failures.dart';
+import '../models/book_model.dart';
+import 'home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  final ApiServer apiServer;
+  final ApiService apiService;
 
-  HomeRepoImpl(this.apiServer);
-
+  HomeRepoImpl(this.apiService);
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
-      var data = await apiServer.get(
+      var data = await apiService.get(
           endPoint:
-          'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:Programming');
+          'volumes?Filtering=free-ebooks&Sorting=newest &q=computer science');
       List<BookModel> books = [];
-      for (var item in data ['items']){
-           books.add(BookModel.fromJson(item));
+      for (var item in data['items']) {
+        try {
+          books.add(BookModel.fromJson(item));
+        } catch (e) {
+          books.add(BookModel.fromJson(item));
+        }
       }
+
       return right(books);
-    }  catch (e) {
-      if (e is DioException){
-         return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
       }
-      return left(ServerFailure(e.toString()));
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
     }
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks()async {
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      var data = await apiServer.get( 
-          endPoint:
-          'volumes?Filtering=free-ebooks&q=subject:Programming');
+      var data = await apiService.get(
+          endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
       List<BookModel> books = [];
-      for (var item in data ['items']){
+      for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
+
       return right(books);
-    }  catch (e) {
-      if (e is DioException){
-        return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
       }
-      return left(ServerFailure(e.toString()));
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      var data = await apiService.get(
+          endPoint:
+          'volumes?Filtering=free-ebooks&Sorting=relevance &q=subject:Programming');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
+    }
+  }
+
+
 }

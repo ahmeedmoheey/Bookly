@@ -6,8 +6,8 @@ import '../core/api_server/api_server.dart';
 
 final getIt = GetIt.instance;
 void setup(){
-  getIt.registerSingleton<ApiServer>(ApiServer(Dio()));
+  getIt.registerSingleton<ApiService>(ApiService(Dio()));
     getIt.registerSingleton<HomeRepoImpl>(HomeRepoImpl(
-      getIt.get<ApiServer>(),
+      getIt.get<ApiService>(),
     ));
 }
