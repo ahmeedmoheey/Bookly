@@ -5,8 +5,11 @@ import '../../../../../../core/colors_manager.dart';
 import '../../../../../../utils/app_styles/app_styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key,  this.mainAxisAlignment = MainAxisAlignment.center});
+  const BookRating({super.key,  this.mainAxisAlignment = MainAxisAlignment.center, required this.rating, required this.count});
  final MainAxisAlignment mainAxisAlignment;
+  final num  rating;
+ final int count ;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,8 +23,8 @@ class BookRating extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-        const Text(
-          '4.8',
+         Text(
+          rating.toString(),
           style: AppStyles.textStyle16,
         ),
         const SizedBox(
@@ -30,7 +33,7 @@ class BookRating extends StatelessWidget {
         Opacity(
           opacity: .5,
           child:    Text(
-            '(245)',
+            '$count',
             style: AppStyles.textStyle14.copyWith(fontWeight: FontWeight.w600),
           ),
         )
