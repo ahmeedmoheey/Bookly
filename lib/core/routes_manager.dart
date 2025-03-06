@@ -3,6 +3,7 @@ import 'package:bookly_app/features/search/presentation/views/search_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/presentation/home/data/models/book_model.dart';
 import '../features/presentation/home/data/repos/home_rep_impl.dart';
 import '../features/presentation/home/presentation/manager/cubits/similar_books_cubit/similar_books_cubit.dart';
 import '../features/presentation/home/presentation/views/book_details_view.dart';
@@ -23,11 +24,16 @@ class RoutesManager {
       builder: (context, state) => const HomeView(),
     ),
     GoRoute(
-        path: kBookDetails,
-        builder: (context, state) => BlocProvider(
-            create: (context) => SimilarBooksCubit(
-                  getIt.get<HomeRepoImpl>(),
-                ))),
+      path: kBookDetails,
+      builder: (context, state) => BlocProvider(
+        create: (context) => SimilarBooksCubit(
+          getIt.get<HomeRepoImpl>(),
+        ),
+        child: BookDetailsView(
+          bookModel: state.extra as BookModel,
+        ),
+      ),
+    ),
     GoRoute(path: kSearchView, builder: (context, state) => const SearchView())
   ]);
 }

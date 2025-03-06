@@ -18,7 +18,7 @@ class BooksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: const CustomBookImage(imageUrl: '',),
+          child:  CustomBookImage(imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail??'',),
         ),
         const SizedBox(
           height: 43,
@@ -33,7 +33,7 @@ class BooksDetailsSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            bookModel.volumeInfo.authors![0],
+            bookModel.volumeInfo.authors?[0]??'',
             style: AppStyles.textStyle18.copyWith(
               fontWeight: FontWeight.w500,
               fontStyle: FontStyle.italic,

@@ -29,7 +29,7 @@ class BestSellerListView extends StatelessWidget {
           return CustomErrorWidget(errMessage: state.errMessage);
 
         }else{
-          return CustomLoadingWidget();
+          return const  CustomLoadingWidget();
         }
       },
     );
