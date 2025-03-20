@@ -37,7 +37,7 @@ class BookListViewItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * .5,
                       child:  Text(
                         bookModel.volumeInfo.title!,
-                        maxLines: 2,
+                        maxLines: 1,
                         style: AppStyles.textStyle20.copyWith(fontFamily: ConstantManager.kGtSectraFine),
                       )
                   ),

@@ -11,6 +11,7 @@ import '../features/presentation/splash/splash_view.dart';
 import '../utils/service_locator.dart';
 
 class RoutesManager {
+
   static const kHomeView = '/homeView';
   static const kBookDetails = '/booksDetails';
   static const kSearchView = '/searchView';
@@ -24,6 +25,10 @@ class RoutesManager {
       builder: (context, state) => const HomeView(),
     ),
     GoRoute(
+      path: kSearchView,
+      builder: (context, state) => const SearchView(),
+    ),
+    GoRoute(
       path: kBookDetails,
       builder: (context, state) => BlocProvider(
         create: (context) => SimilarBooksCubit(
@@ -34,6 +39,6 @@ class RoutesManager {
         ),
       ),
     ),
-    GoRoute(path: kSearchView, builder: (context, state) => const SearchView())
+
   ]);
 }

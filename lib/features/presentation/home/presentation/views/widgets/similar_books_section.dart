@@ -17,7 +17,7 @@ class SimilarBooksSection extends StatelessWidget {
         Text('You can also like',style: AppStyles.textStyle14.copyWith(
             fontWeight: FontWeight.w600
         ),),
-         SizedBox(height: 16,),
+          const SizedBox(height: 16,),
         GestureDetector(
           onTap: () {
             GoRouter.of(context).push(RoutesManager.kBookDetails,extra: bookModel);
